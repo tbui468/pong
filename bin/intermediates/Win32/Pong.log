@@ -1,2 +1,6 @@
-﻿  Main.cpp
+﻿  Ball.cpp
+  Paddle.cpp
+  Entity.cpp
+  Main.cpp
+  Generating Code...
   Pong.vcxproj -> C:\dev\Pong\bin\Win32\\Pong.exe

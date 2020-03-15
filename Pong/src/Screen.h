@@ -12,14 +12,17 @@ private:
 public:
 	const int SCREEN_WIDTH = 800;
 	const int SCREEN_HEIGHT = 600;
+private:
+	void draw_pixel(int x, int y);
+	bool inside_screen(int x, int y);
 public:
 	Screen();
 	bool init();
 	void update_screen();
 	bool process_events();
 	void set_color(unsigned char red, unsigned char green, unsigned char blue);
-	void set_pixel_color(int x, int y);
-	void set_background_color();
+	void draw_rectangle(int x_start, int y_start, int x_end, int y_end);
+	void draw_background();
 	bool close();
 };
 

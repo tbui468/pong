@@ -3,5 +3,8 @@
 
 class Paddle : public Entity
 {
+private:
+
+
 };
 

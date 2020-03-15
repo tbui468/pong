@@ -67,14 +67,43 @@ void Screen::set_color(unsigned char red, unsigned char green, unsigned char blu
 	m_color += 0xff;
 }
 
-void Screen::set_pixel_color(int x, int y) {
-	m_buffer[SCREEN_WIDTH * y + x] = m_color;
+void Screen::draw_pixel(int x, int y) {
+	if(inside_screen(x, y))
+		m_buffer[SCREEN_WIDTH * y + x] = m_color;
 }
 
-void Screen::set_background_color() {
+bool Screen::inside_screen(int x, int y) {
+	if (x < 0) return false;
+	if (x >= SCREEN_WIDTH) return false;
+	if (y < 0) return false;
+	if (y >= SCREEN_HEIGHT) return false;
+	return true;
+}
+
+void Screen::draw_background() {
 	for (int i = 0; i < (SCREEN_WIDTH * SCREEN_HEIGHT); ++i) {
 		m_buffer[i] = m_color;
 	}
+}
+
+void Screen::draw_rectangle(int x_start, int y_start, int x_end, int y_end) {
+	//swap start and end values to make start the top-left and end the bottom-right
+	if (y_start > y_end) {
+		int temp = y_start;
+		y_start = y_end;
+		y_end = temp;
+	}
+	if (x_start > x_end) {
+		int temp = x_start;
+		x_start = x_end;
+		x_end = temp;
+	}
+	for (int row = y_start; row < y_end; ++row) {
+		for (int col = x_start; col < x_end; ++col) {
+			draw_pixel(col, row);
+		}
+	}
+
 }
 
 bool Screen::close() {

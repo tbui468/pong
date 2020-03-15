@@ -15,10 +15,11 @@ int main(int argc, char* args[]) {
 	screen.init();
 
 	screen.set_color(150, 255, 255);
-	screen.set_background_color();
+	screen.draw_background();
 
 	screen.set_color(0, 0, 0);
-	screen.set_pixel_color(400, 300);
+
+	screen.draw_rectangle(100, 100, 500, 200);
 	screen.update_screen();
 
 	while (screen.process_events()) {
