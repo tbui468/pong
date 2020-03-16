@@ -1,6 +1,22 @@
 ﻿  Ball.cpp
-  Paddle.cpp
+C:\dev\Pong\Pong\src\Entity.h(21,36): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+C:\dev\Pong\Pong\src\Entity.h(22,34): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
   Entity.cpp
+C:\dev\Pong\Pong\src\Entity.h(21,36): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+C:\dev\Pong\Pong\src\Entity.h(22,34): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
   Main.cpp
+C:\dev\Pong\Pong\src\Entity.h(21,36): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+C:\dev\Pong\Pong\src\Entity.h(22,34): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(32,104): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(32,84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(32,64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(32,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(33,96): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(33,78): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(33,60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(33,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Paddle.cpp
+C:\dev\Pong\Pong\src\Entity.h(21,36): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+C:\dev\Pong\Pong\src\Entity.h(22,34): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
   Generating Code...
   Pong.vcxproj -> C:\dev\Pong\bin\Win32\\Pong.exe
