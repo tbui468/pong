@@ -13,21 +13,20 @@ class Entity
 {
 protected:
 	Coordinate m_start;
-	Coordinate m_end;
-	double* m_horizontal_values;
-	double* m_vertical_values;
+	const int WIDTH;
+	const int HEIGHT;
+	int* m_horizontal_pos;
+	int* m_vertical_pos;
 public:
-	Entity(double x, double y, double width, double height) : m_start{ x, y }, m_end{ x + width, y + height } {
-		m_horizontal_values = new double[width];
-		m_vertical_values = new double[height];
-	};
-	~Entity() { delete[] m_horizontal_values; delete[] m_vertical_values; };
+	Entity(double x, double y, int width, int height);
+	~Entity() {};
 	Coordinate get_start() const { return m_start; };
-	Coordinate get_end() const { return m_end; };
+	Coordinate get_end() const { return { m_start.x + WIDTH, m_start.y + HEIGHT }; };
 	void move(double h_velocity, double v_velocity);
-	bool collision(const Entity* entity);
+	bool collision(const Entity* entity) const;
 private:
-	bool collision_x(const Entity* entity);
-	bool collision_y(const Entity* entity);
+	bool collision_x(const Entity* entity) const;
+	bool collision_y(const Entity* entity) const;
+	void update_pos_array();
 };
 

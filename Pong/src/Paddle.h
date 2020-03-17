@@ -6,6 +6,6 @@ class Paddle : public Entity
 private:
 	
 public:
-	Paddle(double x, double y, double width, double height) :Entity(x, y, width, height) {};
+	Paddle(double x, double y) :Entity(x, y, 25, 100) {};
 };
 
