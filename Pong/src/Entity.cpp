@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "Screen.h"
 
 Entity::Entity(double x, double y, int width, int height) : m_start{ x, y }, WIDTH(width), HEIGHT(height) {
 	m_horizontal_pos = new int[width];
@@ -6,9 +7,16 @@ Entity::Entity(double x, double y, int width, int height) : m_start{ x, y }, WID
 	update_pos_array();
 };
 
-void Entity::move(double h_velocity, double v_velocity) {
-	m_start.x += h_velocity;
-	m_start.y += v_velocity;
+
+void Entity::update_location(double h_velocity, double v_velocity, unsigned int delta_time) {
+	m_start.x += (h_velocity * delta_time);
+	m_start.y += (v_velocity * delta_time);
+
+	//keep in screen
+	if (m_start.x < 0) m_start.x = 0;
+	if (m_start.y < 0) m_start.y = 0;
+	if (m_start.x + WIDTH >= Screen::SCREEN_WIDTH) m_start.x = (Screen::SCREEN_WIDTH - WIDTH );
+	if (m_start.y + HEIGHT >= Screen::SCREEN_HEIGHT) m_start.y = (Screen::SCREEN_HEIGHT - HEIGHT);
 	update_pos_array();
 }
 

@@ -1,18 +1,12 @@
-﻿  Main.cpp
-C:\dev\Pong\Pong\src\Main.cpp(37,108): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(37,87): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(37,66): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(37,43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(38,100): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(38,81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(38,62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(38,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(46,101): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(46,82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(46,63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(46,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(47,109): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(47,88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(47,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\dev\Pong\Pong\src\Main.cpp(47,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+﻿  Ball.cpp
+  Main.cpp
+C:\dev\Pong\Pong\src\Main.cpp(65,109): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(65,88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(65,67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(65,44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(66,113): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(66,91): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(66,69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\dev\Pong\Pong\src\Main.cpp(66,45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
   Pong.vcxproj -> C:\dev\Pong\bin\Win32\\Pong.exe

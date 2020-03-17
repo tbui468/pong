@@ -48,13 +48,22 @@ void Screen::update_screen() {
 	SDL_RenderPresent(m_renderer);
 }
 
-bool Screen::process_events() {
+
+//return an enum???
+int Screen::process_events() {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
-		if(event.type == SDL_QUIT)
-		return false;
+		if (event.type == SDL_QUIT)
+			return Event_quit;
+		if (event.type == SDL_KEYDOWN) {
+			int key = event.key.keysym.sym;
+			if (key == SDLK_DOWN)
+				return Event_down;
+			if (key == SDLK_UP)
+				return Event_up;
+		}
 	}
-	return true;
+	return Event_continue;
 }
 
 void Screen::set_color(unsigned char red, unsigned char green, unsigned char blue) {

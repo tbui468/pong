@@ -158,7 +158,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Ball.cpp" />
     <ClCompile Include="src\Paddle.cpp" />
     <ClCompile Include="src\Entity.cpp" />
@@ -166,7 +165,6 @@
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Ball.h" />
     <ClInclude Include="src\Paddle.h" />
     <ClInclude Include="src\Entity.h" />

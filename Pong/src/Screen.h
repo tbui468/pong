@@ -1,6 +1,8 @@
 #pragma once
 #include "SDL.h"
 
+enum Events { Event_quit = 0, Event_continue, Event_up, Event_down };
+
 class Screen
 {
 private:
@@ -10,8 +12,8 @@ private:
 	Uint32* m_buffer;
 	Uint32 m_color = 0;
 public:
-	const int SCREEN_WIDTH = 800;
-	const int SCREEN_HEIGHT = 600;
+	static const int SCREEN_WIDTH = 800;
+	static const int SCREEN_HEIGHT = 600;
 private:
 	void draw_pixel(int x, int y);
 	bool inside_screen(int x, int y);
@@ -19,7 +21,7 @@ public:
 	Screen();
 	bool init();
 	void update_screen();
-	bool process_events();
+	int process_events();
 	void set_color(unsigned char red, unsigned char green, unsigned char blue);
 	void draw_rectangle(int x_start, int y_start, int x_end, int y_end);
 	void draw_background();
