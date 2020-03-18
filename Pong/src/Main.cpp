@@ -3,15 +3,12 @@
 #include "Entity.h"
 #include "Paddle.h"
 #include "Ball.h"
-#include "UserInput.h"
 
 /*
-FEATURES TO ADD
+FEATURES TO ADD/FIX
 ****************
--wall stops ball and paddle, not have padde bounce if adjacent to wall
--Have ball react with paddle
+Screen class handles input right now, and can only accept one key press **Fix this by moving input into a different class???
 -Choose to have AI control second paddle
--BUG: ball gets stuck in wall, fix bounce algorithm
 -extra feature: smooth out the motion
 */
 
@@ -37,7 +34,7 @@ int main(int argc, char* args[]) {
 	unsigned int elapsed_time = SDL_GetTicks();
 	unsigned int previous_time;
 
-	UserInput user;
+
 	
 	while (true) {
 		previous_time = elapsed_time;
@@ -45,15 +42,6 @@ int main(int argc, char* args[]) {
 		int action = screen.process_events();
 		int delta_time = elapsed_time - previous_time;
 
-		int player1_action = user.get_input();
-		switch (player1_action) {
-		case Key_up:
-			paddle2->move(-1, delta_time);
-			break;
-		case Key_down:
-			paddle2->move(1, delta_time);
-			break;
-		}
 
 		if (action == Event_quit)
 			break;
@@ -63,6 +51,12 @@ int main(int argc, char* args[]) {
 			break;
 		case Event_down_p1:
 			paddle->move(1, delta_time);
+			break;
+		case Event_up_p2:
+			paddle2->move(-1, delta_time);
+			break;
+		case Event_down_p2:
+			paddle2->move(1, delta_time);
 			break;
 		default:
 			break;

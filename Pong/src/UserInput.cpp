@@ -5,16 +5,19 @@ UserInput::UserInput() {
 }
 
 int UserInput::get_input() {
+	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_KEYDOWN) {
-			switch (event.key.keysym.sym) {
-			case SDLK_w:
+			int key = event.key.keysym.sym;
+			switch (key) {
+			case SDLK_a:
 				return Key_up;
 				break;
-			case SDLK_s:
+			case SDLK_b:
 				return Key_down;
 				break;
 			}
 		}
 	}
+	return Key_nothing;
 }

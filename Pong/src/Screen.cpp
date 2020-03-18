@@ -61,6 +61,10 @@ int Screen::process_events() {
 				return Event_down_p1;
 			if (key == SDLK_UP)
 				return Event_up_p1;
+			if (key == SDLK_s)
+				return Event_down_p2;
+			if (key == SDLK_w)
+				return Event_up_p2;
 		}
 	}
 	return Event_continue;
