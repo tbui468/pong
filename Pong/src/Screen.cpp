@@ -58,9 +58,9 @@ int Screen::process_events() {
 		if (event.type == SDL_KEYDOWN) {
 			int key = event.key.keysym.sym;
 			if (key == SDLK_DOWN)
-				return Event_down;
+				return Event_down_p1;
 			if (key == SDLK_UP)
-				return Event_up;
+				return Event_up_p1;
 		}
 	}
 	return Event_continue;

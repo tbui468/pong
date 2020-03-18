@@ -25,9 +25,10 @@ public:
 	Coordinate get_end() const { return { m_start.x + WIDTH, m_start.y + HEIGHT }; };
 	bool collision(const Entity* entity) const;
 	void update_location(double h_velocity, double v_velocity, unsigned int elapsed_time);
-private:
+protected:
 	bool collision_x(const Entity* entity) const;
 	bool collision_y(const Entity* entity) const;
+private:
 	void update_pos_array();
 };
 

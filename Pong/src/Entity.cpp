@@ -15,8 +15,8 @@ void Entity::update_location(double h_velocity, double v_velocity, unsigned int 
 	//keep in screen
 	if (m_start.x < 0) m_start.x = 0;
 	if (m_start.y < 0) m_start.y = 0;
-	if (m_start.x + WIDTH >= Screen::SCREEN_WIDTH) m_start.x = (Screen::SCREEN_WIDTH - WIDTH );
-	if (m_start.y + HEIGHT >= Screen::SCREEN_HEIGHT) m_start.y = (Screen::SCREEN_HEIGHT - HEIGHT);
+	if (m_start.x > Screen::SCREEN_WIDTH - WIDTH) m_start.x = (Screen::SCREEN_WIDTH - WIDTH);
+	if (m_start.y > Screen::SCREEN_HEIGHT - HEIGHT) m_start.y = (Screen::SCREEN_HEIGHT - HEIGHT);
 	update_pos_array();
 }
 

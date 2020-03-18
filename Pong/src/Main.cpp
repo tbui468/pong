@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "UserInput.h"
 
 /*
 FEATURES TO ADD
@@ -35,28 +36,40 @@ int main(int argc, char* args[]) {
 
 	unsigned int elapsed_time = SDL_GetTicks();
 	unsigned int previous_time;
+
+	UserInput user;
 	
 	while (true) {
 		previous_time = elapsed_time;
 		elapsed_time = SDL_GetTicks();
 		int action = screen.process_events();
 		int delta_time = elapsed_time - previous_time;
+
+		int player1_action = user.get_input();
+		switch (player1_action) {
+		case Key_up:
+			paddle2->move(-1, delta_time);
+			break;
+		case Key_down:
+			paddle2->move(1, delta_time);
+			break;
+		}
+
 		if (action == Event_quit)
 			break;
 		switch (action) {
-		case Event_up:
+		case Event_up_p1:
 			paddle->move(-1, delta_time);
 			break;
-		case Event_down:
+		case Event_down_p1:
 			paddle->move(1, delta_time);
 			break;
 		default:
 			break;
 		}
-
 		
-		std::cout << elapsed_time << std::endl;
-		ball->move(delta_time);
+
+		ball->move(delta_time, paddle, paddle2);
 		screen.set_color(0,0,0);
 		screen.draw_background();
 
@@ -67,7 +80,8 @@ int main(int argc, char* args[]) {
 
 		screen.update_screen();
 
-		if (paddle->collision(ball)) std::cout << "Collision!!!" << std::endl;
+		if (paddle->collision(ball)) std::cout << "Collision 1" << std::endl;
+		if (paddle2->collision(ball)) std::cout << "Collision 2" << std::endl;
 
 
 

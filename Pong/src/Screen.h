@@ -1,7 +1,7 @@
 #pragma once
 #include "SDL.h"
 
-enum Events { Event_quit = 0, Event_continue, Event_up, Event_down };
+enum Events { Event_quit = 0, Event_continue, Event_up_p1, Event_down_p1, Event_up_p2, Event_down_p2};
 
 class Screen
 {
