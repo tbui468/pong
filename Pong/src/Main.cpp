@@ -6,10 +6,24 @@
 
 /*
 FEATURES TO ADD/FIX
-****************
-Screen class handles input right now, and can only accept one key press **Fix this by moving input into a different class???
--Choose to have AI control second paddle
--extra feature: smooth out the motion
+********************
+-Add score when ball moves past paddle.  Have ball respawn on one side
+-create a list of criteria for good code (using Code Complete Guidelines).  
+-Look at list below.  Rate each item from (poor, average, good) (0, 1, 2 pts)
+-Rate the program out of 20
+
+THE LIST (limit to only 10)
+*********
+1. member variables prefixed with m_.  Classes capitalized.  
+2. Object coupling (draw a diagram of the connections of all classes)
+3. Inheritance (Is the Entity class and Paddle and Ball class interfaces the same???)
+4. Magic numbers inside the code??
+5. Making use of containers or inheritance?  Would one or the other been a better choice?
+6. Any unneccesary copying of large objects of data structures?
+7. Class abstraction and routine names (are the class routines and their names self-explanatory?  Is the class cohesive?)
+8. Superfluous code?  Am I programming for the future, or the actual specifications?
+9. Using modern C++?  Smart pointers?  For each loops?  
+10. Style.  Subjective.  Is it easy to follow?  naming conventions clear and consistent?  No crazy nested ifs/loops?  Repeated code
 */
 
 
@@ -39,28 +53,14 @@ int main(int argc, char* args[]) {
 	while (true) {
 		previous_time = elapsed_time;
 		elapsed_time = SDL_GetTicks();
-		int action = screen.process_events();
+		std::array<int, 3>* actions = screen.process_events();
 		int delta_time = elapsed_time - previous_time;
+		std::cout << actions->size() << std::endl;
+		if ((*actions)[0] == 0)
+			break;
+		paddle->move((*actions)[1], delta_time);
+		paddle2->move((*actions)[2], delta_time);
 
-
-		if (action == Event_quit)
-			break;
-		switch (action) {
-		case Event_up_p1:
-			paddle->move(-1, delta_time);
-			break;
-		case Event_down_p1:
-			paddle->move(1, delta_time);
-			break;
-		case Event_up_p2:
-			paddle2->move(-1, delta_time);
-			break;
-		case Event_down_p2:
-			paddle2->move(1, delta_time);
-			break;
-		default:
-			break;
-		}
 		
 
 		ball->move(delta_time, paddle, paddle2);

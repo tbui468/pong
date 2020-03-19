@@ -1,7 +1,7 @@
 #pragma once
 #include "SDL.h"
+#include <array>
 
-enum Events { Event_quit = 0, Event_continue, Event_up_p1, Event_down_p1, Event_up_p2, Event_down_p2};
 
 class Screen
 {
@@ -11,6 +11,7 @@ private:
 	SDL_Texture* m_texture;
 	Uint32* m_buffer;
 	Uint32 m_color = 0;
+	std::array<int, 3>* actions;
 public:
 	static const int SCREEN_WIDTH = 800;
 	static const int SCREEN_HEIGHT = 600;
@@ -21,7 +22,7 @@ public:
 	Screen();
 	bool init();
 	void update_screen();
-	int process_events();
+	std::array<int, 3>* process_events();
 	void set_color(unsigned char red, unsigned char green, unsigned char blue);
 	void draw_rectangle(int x_start, int y_start, int x_end, int y_end);
 	void draw_background();

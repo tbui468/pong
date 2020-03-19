@@ -1,8 +1,8 @@
 #include "Screen.h"
 #include <iostream>
 
-Screen::Screen() : m_window(nullptr), m_renderer(nullptr), m_texture(nullptr), m_buffer(nullptr) {
-
+Screen::Screen() : m_window(nullptr), m_renderer(nullptr), m_texture(nullptr), m_buffer(nullptr), actions(new std::array<int, 3>) {
+	(*actions).fill(0);
 }
 
 bool Screen::init() {
@@ -49,25 +49,38 @@ void Screen::update_screen() {
 }
 
 
-//return an enum???
-int Screen::process_events() {
+//return a vector of all user inputs that round
+std::array<int, 3>* Screen::process_events() {
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
 		if (event.type == SDL_QUIT)
-			return Event_quit;
+			(*actions)[0] = 0;
+		else
+			(*actions)[0] = 1;
 		if (event.type == SDL_KEYDOWN) {
 			int key = event.key.keysym.sym;
 			if (key == SDLK_DOWN)
-				return Event_down_p1;
+				(*actions)[1] = 1;
 			if (key == SDLK_UP)
-				return Event_up_p1;
+				(*actions)[1] = -1;
 			if (key == SDLK_s)
-				return Event_down_p2;
+				(*actions)[2] = 1;
 			if (key == SDLK_w)
-				return Event_up_p2;
+				(*actions)[2] = -1;
+		}
+		if (event.type == SDL_KEYUP) {
+			int key = event.key.keysym.sym;
+			if (key == SDLK_DOWN)
+				(*actions)[1] = 0;
+			if (key == SDLK_UP)
+				(*actions)[1] = 0;
+			if (key == SDLK_s)
+				(*actions)[2] = 0;
+			if (key == SDLK_w)
+				(*actions)[2] = 0;
 		}
 	}
-	return Event_continue;
+	return actions;
 }
 
 void Screen::set_color(unsigned char red, unsigned char green, unsigned char blue) {
