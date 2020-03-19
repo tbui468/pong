@@ -140,3 +140,110 @@ bool Screen::close() {
 	SDL_Quit();
 	return true;
 }
+
+//32x64 number
+//width is 8 pixels
+void Screen::draw_char(char character, int x, int y) {
+	draw_rectangle(x, y, x + 32, y + 64);
+	set_color(0, 0, 0);
+	switch (character) {
+	case 48: //0
+		draw_rectangle(x + 8, y + 8, x + 24, y + 56);
+		break;
+	case 49: 
+		draw_rectangle(x , y , x + 12, y + 64);
+		draw_rectangle(x + 20, y, x + 32, y + 64);
+		break;
+	case 50:
+		draw_rectangle(x, y + 8, x + 24, y + 28);
+		draw_rectangle(x + 8, y + 36, x + 32, y + 56);
+		break;
+	case 51:
+		draw_rectangle(x, y + 8, x + 24, y + 28);
+		draw_rectangle(x, y + 36, x + 24, y + 56);
+		break;
+	case 52:
+		draw_rectangle(x+8, y , x + 24, y + 28);
+		draw_rectangle(x , y + 36, x + 24, y + 64);
+		break;
+	case 53:
+		draw_rectangle(x+8, y + 8, x + 32, y + 28);
+		draw_rectangle(x , y + 36, x + 24, y + 56);
+		break;
+	case 54:
+		draw_rectangle(x + 8, y + 8, x + 32, y + 28);
+		draw_rectangle(x+8, y + 36, x + 24, y + 56);
+		break;
+	case 55:
+		draw_rectangle(x,  y + 8, x + 24, y + 64);
+		break;
+	case 56: //8
+		draw_rectangle(x + 8, y + 8, x + 24, y + 28);
+		draw_rectangle(x + 8, y + 36, x + 24, y + 56);
+		break;
+	case 57:
+		draw_rectangle(x + 8, y + 8, x + 24, y + 28);
+		draw_rectangle(x, y + 36, x + 24, y + 56);
+		break;
+	case 80: //'P'
+		draw_rectangle(x + 8, y + 8, x + 24, y + 28);
+		draw_rectangle(x + 8, y + 36, x + 32, y + 64);
+		break;
+	case 76: //'L'
+		draw_rectangle(x + 8, y, x + 32, y + 56);
+		break;
+	case 65: //'A'
+		draw_rectangle(x + 8, y + 8, x + 24, y + 28);
+		draw_rectangle(x + 8, y + 36, x + 24, y + 64);
+		break;
+	case 89: //'Y'
+		draw_rectangle(x + 8, y , x + 24, y + 28);
+		draw_rectangle(x, y + 36, x + 12, y + 64);
+		draw_rectangle(x + 20, y + 36, x + 32, y + 64);
+		break;
+	case 69: //'E'
+		draw_rectangle(x + 8, y + 8, x + 32, y + 28);
+		draw_rectangle(x + 8, y + 36, x + 32, y + 56);
+		break;
+	case 82: //'R'
+		draw_rectangle(x + 8, y + 8, x + 24, y + 28);
+		draw_rectangle(x + 8, y + 36, x + 16, y + 64);
+		draw_rectangle(x + 24, y + 36, x + 32, y + 50);
+		draw_rectangle(x + 16, y + 50, x + 24, y + 64 );
+		break;
+	case 83: //'S'
+		draw_rectangle(x + 8, y + 8, x + 32, y + 28);
+		draw_rectangle(x, y + 36, x + 24, y + 56);
+		break;
+	default:
+		break;
+	}
+	set_color(255, 255, 255);
+}
+
+//128x128
+//width: 24
+//15 pixels between title letters
+void Screen::draw_title(int x, int y) {
+	set_color(255, 255, 255);
+	draw_rectangle(x, y, x + 128, y + 128); //P
+	draw_rectangle(x + 144, y, x + 272, y + 128); //O
+	draw_rectangle(x + 288, y, x + 416, y + 128); //N
+	draw_rectangle(x + 432, y, x + 560, y + 128); //G
+	set_color(0, 0, 0);
+
+	//P
+	draw_rectangle(x + 24, y + 24, x + 104, y + 52 );
+	draw_rectangle(x + 24, y + 76, x + 128, y + 128);
+	//O
+	draw_rectangle(x + 168, y + 24, x + 248, y + 104);
+	//N
+	draw_rectangle(x + 312, y + 24, x + 340, y + 128);
+	draw_rectangle(x + 364, y , x + 392, y + 104);
+	draw_rectangle(x + 340, y, x + 364, y + 24);
+	draw_rectangle(x + 340, y + 104, x + 364, y + 128);
+	//G
+	draw_rectangle(x + 456, y + 24, x + 560, y + 52);
+	draw_rectangle(x + 456, y + 76, x + 536, y + 104);
+	draw_rectangle(x + 456, y + 24, x + 496, y + 104);
+}

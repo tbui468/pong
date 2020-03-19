@@ -9,6 +9,7 @@ void Ball::move(unsigned int delta_time, const Paddle* p1, const Paddle* p2) {
 		}
 		if (collision_y(p1)) {
 			m_h_velocity *= -1;
+			//m_h_velocity = m_h_velocity < 0 ? m_h_velocity - 0.1 : m_h_velocity + 0.1;
 		}
 		else if (collision_x(p1)) {
 			m_v_velocity *= -1;
@@ -21,6 +22,7 @@ void Ball::move(unsigned int delta_time, const Paddle* p1, const Paddle* p2) {
 		}
 		if (collision_y(p2)) {
 			m_h_velocity *= -1;
+			//m_h_velocity = m_h_velocity < 0 ? m_h_velocity - 0.1 : m_h_velocity + 0.1;
 		}
 		else if (collision_x(p2)) {
 			m_v_velocity *= -1;

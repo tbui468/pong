@@ -26,6 +26,8 @@ public:
 	void set_color(unsigned char red, unsigned char green, unsigned char blue);
 	void draw_rectangle(int x_start, int y_start, int x_end, int y_end);
 	void draw_background();
+	void draw_char(char character, int x, int y);
+	void draw_title(int x, int y);
 	bool close();
 };
 
