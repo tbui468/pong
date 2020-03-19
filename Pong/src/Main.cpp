@@ -9,8 +9,8 @@ FEATURES TO ADD/FIX
 ********************
 -Add score when ball moves past paddle.  Have ball respawn on one side
 -draw score on screen (0 - 10) 
--draw walls and center line
--title screen (title, creator, 1 player or 2 player game)
+-wrap game in round class, and wrap that in game class
+-title screen class(title, creator, 1 player or 2 player game)
 -getting to 10 points removes ball, and then sends player back to title screen after 3 seconds
 -create a list of criteria for good code (using Code Complete Guidelines).  
 -Look at list below.  Rate each item from (poor, average, good) (0, 1, 2 pts)
@@ -70,7 +70,18 @@ int main(int argc, char* args[]) {
 		//draw background, ball and paddles
 		screen.set_color(0,0,0);
 		screen.draw_background();
+
 		screen.set_color(255, 255, 255);
+		//draw center line of width
+		int x_center = Screen::SCREEN_WIDTH / 2;
+		for (int i = 0; i < 12; ++i) {
+			screen.draw_rectangle(x_center - 2, i*50 + 12, x_center + 2,i*50 + 37 );
+		}
+
+		screen.draw_char('0', x_center - 64, 32);
+		screen.draw_char('0', x_center + 32, 32);
+
+
 		screen.draw_rectangle(int(ball->get_start().x), int(ball->get_start().y), int(ball->get_end().x), int(ball->get_end().y));
 		screen.draw_rectangle(paddle->get_start().x, paddle->get_start().y, paddle->get_end().x, paddle->get_end().y);
 		screen.draw_rectangle(paddle2->get_start().x, paddle2->get_start().y, paddle2->get_end().x, paddle2->get_end().y);
@@ -97,7 +108,7 @@ int main(int argc, char* args[]) {
 		screen.draw_char('R', 300, 510);
 		screen.draw_char('S', 400, 10);
 		*/
-		screen.draw_title(100, 200);
+		//screen.draw_title(100, 200);
 
 		screen.update_screen();
 
