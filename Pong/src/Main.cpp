@@ -8,6 +8,7 @@
 FEATURES TO ADD/FIX
 ********************
 -Add score when ball moves past paddle.  Have ball respawn on one side
+-draw walls and center line
 -create a list of criteria for good code (using Code Complete Guidelines).  
 -Look at list below.  Rate each item from (poor, average, good) (0, 1, 2 pts)
 -Rate the program out of 20
@@ -55,7 +56,6 @@ int main(int argc, char* args[]) {
 		elapsed_time = SDL_GetTicks();
 		std::array<int, 3>* actions = screen.process_events();
 		int delta_time = elapsed_time - previous_time;
-		std::cout << actions->size() << std::endl;
 		if ((*actions)[0] == 0)
 			break;
 		paddle->move((*actions)[1], delta_time);
@@ -74,8 +74,7 @@ int main(int argc, char* args[]) {
 
 		screen.update_screen();
 
-		if (paddle->collision(ball)) std::cout << "Collision 1" << std::endl;
-		if (paddle2->collision(ball)) std::cout << "Collision 2" << std::endl;
+
 
 
 
