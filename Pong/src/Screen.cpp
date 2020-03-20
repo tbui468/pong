@@ -83,6 +83,7 @@ std::array<int, 3>* Screen::process_events() {
 	return actions;
 }
 
+
 void Screen::set_color(unsigned char red, unsigned char green, unsigned char blue) {
 	m_color = red;
 	m_color <<= 8;

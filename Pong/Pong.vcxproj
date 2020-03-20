@@ -158,19 +158,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Round.cpp" />
     <ClCompile Include="src\Ball.cpp" />
     <ClCompile Include="src\Paddle.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Screen.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\UserInput.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Round.h" />
     <ClInclude Include="src\Ball.h" />
     <ClInclude Include="src\Paddle.h" />
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Screen.h" />
-    <ClInclude Include="src\UserInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

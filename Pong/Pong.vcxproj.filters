@@ -30,7 +30,7 @@
     <ClCompile Include="src\Paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\UserInput.cpp">
+    <ClCompile Include="src\Round.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClInclude Include="src\Ball.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\UserInput.h">
+    <ClInclude Include="src\Round.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

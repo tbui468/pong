@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Screen.h"
-#include "Entity.h"
-#include "Paddle.h"
-#include "Ball.h"
+#include "Round.h"
+#include <thread>
+#include <chrono>
 
 /*
 FEATURES TO ADD/FIX
@@ -31,92 +31,64 @@ THE LIST (limit to only 10)
 */
 
 
-
+//Main is the game class
 int main(int argc, char* args[]) {
+
+	srand((unsigned)time(NULL));
 
 	std::cout << "Let's play Pong!" << std::endl;
 
-	
 
 	Screen screen;
 
 	screen.init();
 
-
-	Paddle* paddle = new Paddle(750, 250);
-	Ball* ball = new Ball(50, 200);
-	Paddle* paddle2 = new Paddle(25, 300);
+	using namespace std::literals::chrono_literals;
 
 
+	//std::thread worker(print_numbers, 100);
+	//std::thread worker2(print_numbers, 10);
 
-	unsigned int elapsed_time = SDL_GetTicks();
-	unsigned int previous_time;
 
+
+	//draw menu screen here
+	bool play = true;
+	
+	while (play) {
+		screen.set_color(0, 0, 0);
+		screen.draw_background();
+		screen.draw_title(125, 200);
+		screen.update_screen();
+		std::this_thread::sleep_for(1.5s);
+
+
+		int score_1 = 0;
+		int score_2 = 0;
+
+		while (play) {
+			Round round(screen, score_1, score_2);
+			int point = round.start();
+			switch (point) {
+			case Point_player_1:
+				score_1++;
+				break;
+			case Point_player_2:
+				score_2++;
+				break;
+			case Point_quit:
+				play = false;
+				break;
+			default:
+				break;
+			}
+			std::this_thread::sleep_for(.2s);
+			if (score_1 > 9 || score_2 > 9)
+				break;
+
+		}
+	}
 
 	
-	while (true) {
-		previous_time = elapsed_time;
-		elapsed_time = SDL_GetTicks();
-		std::array<int, 3>* actions = screen.process_events();
-		int delta_time = elapsed_time - previous_time;
-
-		if ((*actions)[0] == 0)
-			break;
-
-		paddle->move((*actions)[1], delta_time);
-		paddle2->move((*actions)[2], delta_time);
-		ball->move(delta_time, paddle, paddle2);
-
-		//draw background, ball and paddles
-		screen.set_color(0,0,0);
-		screen.draw_background();
-
-		screen.set_color(255, 255, 255);
-		//draw center line of width
-		int x_center = Screen::SCREEN_WIDTH / 2;
-		for (int i = 0; i < 12; ++i) {
-			screen.draw_rectangle(x_center - 2, i*50 + 12, x_center + 2,i*50 + 37 );
-		}
-
-		screen.draw_char('0', x_center - 64, 32);
-		screen.draw_char('0', x_center + 32, 32);
-
-
-		screen.draw_rectangle(int(ball->get_start().x), int(ball->get_start().y), int(ball->get_end().x), int(ball->get_end().y));
-		screen.draw_rectangle(paddle->get_start().x, paddle->get_start().y, paddle->get_end().x, paddle->get_end().y);
-		screen.draw_rectangle(paddle2->get_start().x, paddle2->get_start().y, paddle2->get_end().x, paddle2->get_end().y);
-
-		//draw score
-		/*
-		screen.draw_char('0', 100, 50);
-		screen.draw_char('1', 100, 150);
-		screen.draw_char('2', 100, 250);
-		screen.draw_char('3', 100, 350);
-		screen.draw_char('4', 100, 450);
-
-		screen.draw_char('5', 200, 50);
-		screen.draw_char('6', 200, 150);
-		screen.draw_char('7', 200, 250);
-		screen.draw_char('8', 200, 350);
-		screen.draw_char('9', 200, 450);
-
-		screen.draw_char('P', 300, 10);
-		screen.draw_char('L', 300, 110);
-		screen.draw_char('A', 300, 210);
-		screen.draw_char('Y', 300, 310);
-		screen.draw_char('E', 300, 410);
-		screen.draw_char('R', 300, 510);
-		screen.draw_char('S', 400, 10);
-		*/
-		//screen.draw_title(100, 200);
-
-		screen.update_screen();
-
-
-
-
-
-	}
 
 	screen.close();
 
