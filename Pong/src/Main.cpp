@@ -1,8 +1,7 @@
 #include <iostream>
-#include "Screen.h"
-#include "Round.h"
-#include <thread>
-#include <chrono>
+//#include "Screen.h"
+//#include "Round.h"
+#include "Game.h"
 
 /*
 FEATURES TO ADD/FIX
@@ -28,69 +27,42 @@ THE LIST (limit to only 10)
 8. Superfluous code?  Am I programming for the future, or the actual specifications?
 9. Using modern C++?  Smart pointers?  For each loops?  
 10. Style.  Subjective.  Is it easy to follow?  naming conventions clear and consistent?  No crazy nested ifs/loops?  Repeated code
+
+Areas of Improvement
+********************
+-Use consistent naming convention (ClassName, method_name(), t_parameter, m_variable)
+-Each class either contains ("has a") or inherits ("is a") another class.  Be sure to declare "contained" objects in class declaration
+-Classes that inherit from a base class should have the same public interface.  Ball and Paddle should use a shared Entity interface
+-Avoid passing arguments up multiple levels of class.  Game "has a" Round "has a" Ball.  Ball passes score info to Round, and 
+	Round passes it to Game.  Next time, have Round keep track of Ball position, and the Round.loop returns a value (eg enum)
+	to tell game to update score.
+-Game is starting class. Contains Screeen, Input and Round.  Initializes Screen and Input.  Member variables include player 1 and 2 scores
+	Game will loop round repeatedly until a player wins, or the close window button is pressed
+-Round is the largest class.  Constructor parameters are Screen and Input.  Contains Screen, Input, Ball, Paddle1 and Paddle2. 
+	When the round is over, it returns score information to Game, to update player 1 and 2 score.  
+-Screen class is contained in both Game and Round.  In Game, Screen draws title.  In Round, screen draws ball, paddles and score.  
+-Input class in contained in Round.  Round uses input.get_input(), and uses return data to move paddles 1 and 2.
+-Ball and Paddle class inherit from Entity.  Round class takes in user input from Input object.  If move is valid based
+	on ball.collision(x,y,paddle) and paddle.collision(x, y, ball), call ball.set_location(x, y) and paddle.set_location(x, y)
+	Round classes calls Screen.draw(args) to draw Ball and Paddle.  Round class calls ball.collision(arg), paddle1.collision(arg), and 
+	paddle2.collision(arg).  If collisions are detected, Round class calls ball.set_velocity(arg) and paddle1.set_velocity(arg), 
+	and paddle2.set_velocity(arg).  
+-Entity class is the base class of Paddle and Ball.  Member variables include x and y locations, width and height, horizontal and vertical
+	velocity.  Methods include collision(x, y, object) set_location(x, y), set_velocity(arg).  
+
 */
 
 
 //Main is the game class
 int main(int argc, char* args[]) {
 
-	srand((unsigned)time(NULL));
-
-	std::cout << "Let's play Pong!" << std::endl;
+	srand((unsigned)time(NULL)); //create random seed
 
 
-	Screen screen;
-
-	screen.init();
-
-	using namespace std::literals::chrono_literals;
-
-
-	//std::thread worker(print_numbers, 100);
-	//std::thread worker2(print_numbers, 10);
-
-
-
-	//draw menu screen here
-	bool play = true;
-	
-	while (play) {
-		screen.set_color(0, 0, 0);
-		screen.draw_background();
-		screen.draw_title(125, 200);
-		screen.update_screen();
-		std::this_thread::sleep_for(1.5s);
-
-
-		int score_1 = 0;
-		int score_2 = 0;
-
-		while (play) {
-			Round round(screen, score_1, score_2);
-			int point = round.start();
-			switch (point) {
-			case Point_player_1:
-				score_1++;
-				break;
-			case Point_player_2:
-				score_2++;
-				break;
-			case Point_quit:
-				play = false;
-				break;
-			default:
-				break;
-			}
-			std::this_thread::sleep_for(.2s);
-			if (score_1 > 9 || score_2 > 9)
-				break;
-
-		}
-	}
-
-	
-
-	screen.close();
+	Game game;
+	game.init();
+	game.loop();
+	game.end();
 
 	return 0;
 }

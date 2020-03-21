@@ -13,6 +13,7 @@ private:
 	int score_1, score_2;
 public:
 	Round(Screen screen, int score_1, int score_2);
+	void init();
 	int start();
 };
 

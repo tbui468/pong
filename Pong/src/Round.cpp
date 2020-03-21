@@ -5,6 +5,10 @@ Round::Round(Screen screen, int score_1, int score_2) : screen(screen), score_1(
 
 }
 
+void Round::init() {
+
+}
+
 int Round::start() {
 
 	double rand1 = (double)rand() / RAND_MAX;
